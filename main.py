@@ -21,7 +21,7 @@ async def process_start_command(message: types.Message):
 
 @dp.message_handler(Text(equals="🤟Профиль"))
 async def process_by_profile(message:types.Message):
-    await message.answer(f"Название компании: {message.from_user.first_name}\nРеквизиты:{message.from_user.id}")
+    await message.answer(f"Название компании: {message.from_user.first_name}\nРеквизиты:{message.from_user.id}", reply_markup= kb.profile_kb)
 
 
 @dp.message_handler(Text(equals="📃Документ"))
@@ -31,12 +31,12 @@ async def process_by_document(message: types.Message):
 
 @dp.message_handler(Text(equals="🔍Искать статью"))
 async def process_by_topic(message: types.Message):
-    await message.answer("Старательно ищем")
+    await message.answer("Старательно ищем", reply_markup=kb.profile_kb)
 
 
 @dp.message_handler(Text(equals="☺Поддержка"))
 async def process_by_support(message: types.Message):
-    await message.answer("Старательно поддерживаем")
+    await message.answer("Старательно поддерживаем", reply_markup=kb.profile_kb)
 
 
 @dp.callback_query_handler(lambda c: c.data == 'off')
